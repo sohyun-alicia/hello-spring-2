@@ -4,11 +4,13 @@ import com.example.hellospring.domain.Member;
 import com.example.hellospring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 
+@Transactional
 public class MemberService {
     
     private final MemberRepository memberRepository;
@@ -19,7 +21,9 @@ public class MemberService {
     
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
     
-    /* 회원 가입 */
+    /**
+     * 회원 가입
+     */
     public Long join(Member member) {
     //    같은 이름이 있는 중복 회원 X
 //        Optional<Member> result = memberRepository.findByName(member.getName());
@@ -36,7 +40,9 @@ public class MemberService {
         });
     }
     
-    /* 전체 회원 조회 */
+    /**
+     *  전체 회원 조회
+     */
     public List<Member> findMembers() {
         return memberRepository.findAll();
     }
